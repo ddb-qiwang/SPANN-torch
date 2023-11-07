@@ -1,0 +1,17 @@
+:py:mod:`spann`
+===============
+
+.. py:module:: spann
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   functions/index.rst
+   model/index.rst
+   preprocess/index.rst
+
+

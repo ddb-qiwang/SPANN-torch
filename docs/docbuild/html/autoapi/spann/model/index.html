@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>spann.model &mdash; spann</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=525cde36"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="spann.preprocess" href="../preprocess/index.html" />
+    <link rel="prev" title="spann.functions" href="../functions/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            spann
+              <img src="../../../_static/logo_200w.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Welcome to spann's documentation!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../MDTest.html">Test</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spann</span></code></a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spann.functions</span></code></a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spann.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../preprocess/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spann.preprocess</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">spann</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spann</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spann.model</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/michaelGuo1204/SPANN-torch/blob/main/docs/source/autoapi/spann/model/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-spann.model">
+<span id="spann-model"></span><h1><a class="reference internal" href="../../../generated/spann.model.html#module-spann.model" title="spann.model"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spann.model</span></code></a><a class="headerlink" href="#module-spann.model" title="Permalink to this heading"></a></h1>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading"></a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../generated/spann.model.html#spann.model.DSBatchNorm" title="spann.model.DSBatchNorm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DSBatchNorm</span></code></a></p></td>
+<td><p>Domain-specific Batch Normalization Layer</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../generated/spann.model.html#spann.model.Block" title="spann.model.Block"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Block</span></code></a></p></td>
+<td><p>Basic block consist of:</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../generated/spann.model.html#spann.model.NN" title="spann.model.NN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NN</span></code></a></p></td>
+<td><p>Neural network consist of multi Blocks</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../generated/spann.model.html#spann.model.Encoder" title="spann.model.Encoder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Encoder</span></code></a></p></td>
+<td><p>VAE Encoder</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../generated/spann.model.html#spann.model.Decoder" title="spann.model.Decoder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Decoder</span></code></a></p></td>
+<td><p>VAE Decoder</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../generated/spann.model.html#spann.model.ProtoCLS" title="spann.model.ProtoCLS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProtoCLS</span></code></a></p></td>
+<td><p>prototype-based classifier</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../generated/spann.model.html#spann.model.CLS" title="spann.model.CLS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CLS</span></code></a></p></td>
+<td><p>a classifier made up of projection head and prototype-based classifier</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../generated/spann.model.html#spann.model.CrossEntropyLabelSmooth" title="spann.model.CrossEntropyLabelSmooth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CrossEntropyLabelSmooth</span></code></a></p></td>
+<td><p>Cross entropy loss with label smoothing regularizer</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../generated/spann.model.html#spann.model.SPANN_model" title="spann.model.SPANN_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SPANN_model</span></code></a></p></td>
+<td><p>SPANN model, using scRNA reference dataset to annotate spatial transcriptome dataset</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../generated/spann.model.html#spann.model.kl_div" title="spann.model.kl_div"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kl_div</span></code></a>(mu, var[, weight])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../generated/spann.model.html#spann.model.distance_matrix" title="spann.model.distance_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance_matrix</span></code></a>(pts_src, pts_dst[, p])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../generated/spann.model.html#spann.model.distance_gmm" title="spann.model.distance_gmm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance_gmm</span></code></a>(mu_src, mu_dst, var_src, var_dst)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../generated/spann.model.html#spann.model.calculate_bimodality_coefficient" title="spann.model.calculate_bimodality_coefficient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_bimodality_coefficient</span></code></a>([series])</p></td>
+<td><p>calculate BC-coefficient, higher BC coef means more likely to be a bimodal distribution</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../generated/spann.model.html#spann.model.dip" title="spann.model.dip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dip</span></code></a>(samples[, num_bins, p, table])</p></td>
+<td><p>dip test for distribution, to test is the distribution id multi-modality</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../generated/spann.model.html#spann.model.gcm_cal" title="spann.model.gcm_cal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gcm_cal</span></code></a>(cdf, idxs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../generated/spann.model.html#spann.model.lcm_cal" title="spann.model.lcm_cal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lcm_cal</span></code></a>(cdf, idxs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../generated/spann.model.html#spann.model.sup_diff" title="spann.model.sup_diff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sup_diff</span></code></a>(alpha, beta, contact_points)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../generated/spann.model.html#spann.model.p_table" title="spann.model.p_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">p_table</span></code></a>(p, ans, sample_size, n_samples)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../generated/spann.model.html#spann.model.ubot_CCD" title="spann.model.ubot_CCD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ubot_CCD</span></code></a>(sim, beta, device[, stopThr])</p></td>
+<td><p>Unbalanced optimal transport function</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../generated/spann.model.html#spann.model.ensemble_score" title="spann.model.ensemble_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensemble_score</span></code></a>(logit_tensor, confidence_ot)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../generated/spann.model.html#spann.model.mixup_target" title="spann.model.mixup_target"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mixup_target</span></code></a>(x_batch, device)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../generated/spann.model.html#spann.model.pdists" title="spann.model.pdists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pdists</span></code></a>(A[, squared, eps])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spann.model.activation" title="spann.model.activation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">activation</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="spann.model.kl_div">
+<span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">kl_div</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L19-L25"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.kl_div" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spann.model.distance_matrix">
+<span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">distance_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pts_src</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pts_dst</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L31-L37"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.distance_matrix" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spann.model.distance_gmm">
+<span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">distance_gmm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mu_src</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu_dst</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_src</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_dst</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L39-L49"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.distance_gmm" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spann.model.calculate_bimodality_coefficient">
+<span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">calculate_bimodality_coefficient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L51-L77"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.calculate_bimodality_coefficient" title="Permalink to this definition"></a></dt>
+<dd><p>calculate BC-coefficient, higher BC coef means more likely to be a bimodal distribution</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spann.model.dip">
+<span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">dip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.99</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L79-L129"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.dip" title="Permalink to this definition"></a></dt>
+<dd><p>dip test for distribution, to test is the distribution id multi-modality</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spann.model.gcm_cal">
+<span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">gcm_cal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idxs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L131-L145"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.gcm_cal" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spann.model.lcm_cal">
+<span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">lcm_cal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idxs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L148-L150"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.lcm_cal" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spann.model.sup_diff">
+<span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">sup_diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contact_points</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L153-L155"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.sup_diff" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spann.model.p_table">
+<span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">p_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ans</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_samples</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L158-L165"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.p_table" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="spann.model.activation">
+<span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">activation</span></span><a class="headerlink" href="#spann.model.activation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spann.model.DSBatchNorm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">DSBatchNorm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L177-L214"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.DSBatchNorm" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></p>
+<p>Domain-specific Batch Normalization Layer
+:num_features: dimension of the features
+:n_domain: domain number</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="spann.model.DSBatchNorm.reset_running_stats">
+<span class="sig-name descname"><span class="pre">reset_running_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L191-L193"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.DSBatchNorm.reset_running_stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spann.model.DSBatchNorm.reset_parameters">
+<span class="sig-name descname"><span class="pre">reset_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L195-L197"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.DSBatchNorm.reset_parameters" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spann.model.DSBatchNorm._check_input_dim">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_check_input_dim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L199-L200"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.DSBatchNorm._check_input_dim" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spann.model.DSBatchNorm.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L202-L214"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.DSBatchNorm.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spann.model.Block">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">Block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">act</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L217-L266"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.Block" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></p>
+<dl class="simple">
+<dt>Basic block consist of:</dt><dd><p>fc -&gt; bn -&gt; act -&gt; dropout</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Input_dim<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dimension of input</p>
+</dd>
+</dl>
+<p>: output_dim: dimension of output
+:norm: batch normalization, '' represent no batch normalization, 1 represent regular batch normalization, int&gt;1 represent domain-specific batch normalization of n domain
+:act: activation function, relu -&gt; nn.ReLU, rrelu -&gt; nn.RReLU, sigmoid -&gt; nn.Sigmoid(), leaky_relu -&gt; nn.LeakyReLU(), tanh -&gt; nn.Tanh(),  '' -&gt; None
+dropout: dropout rate</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="spann.model.Block.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L253-L266"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.Block.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spann.model.NN">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">NN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cfg</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L269-L291"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.NN" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></p>
+<p>Neural network consist of multi Blocks
+:input_dim: input dimension
+:cfg: model structure configuration, example - [['fc', x_dim, n_domain, 'sigmoid']]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="spann.model.NN.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L288-L291"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.NN.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spann.model.Encoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">Encoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cfg</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L294-L329"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.Encoder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></p>
+<p>VAE Encoder
+:input_dim: input dimension
+:cfg: encoder configuration, example - [['fc', 1024, 1, 'relu'],['fc', 10, '', '']]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="spann.model.Encoder.reparameterize">
+<span class="sig-name descname"><span class="pre">reparameterize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L319-L320"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.Encoder.reparameterize" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spann.model.Encoder.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L322-L329"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.Encoder.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spann.model.Decoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">Decoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cfg</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L332-L355"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.Decoder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></p>
+<p>VAE Decoder
+:z_dim: latent dimension
+:cfg: decoder configuration, example - [['fc', adatas[i].obsm[obsm[i]].shape[1], 1, 'sigmoid']]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="spann.model.Decoder.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L350-L355"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.Decoder.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spann.model.ProtoCLS">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">ProtoCLS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L358-L378"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.ProtoCLS" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></p>
+<p>prototype-based classifier
+L2-norm + a fc layer (without bias)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="spann.model.ProtoCLS.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L370-L373"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.ProtoCLS.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spann.model.ProtoCLS.weight_norm">
+<span class="sig-name descname"><span class="pre">weight_norm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L375-L378"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.ProtoCLS.weight_norm" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spann.model.CLS">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">CLS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_mlp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feat_dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L381-L397"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.CLS" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></p>
+<p>a classifier made up of projection head and prototype-based classifier</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="spann.model.CLS.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L394-L397"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.CLS.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spann.model.CrossEntropyLabelSmooth">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">CrossEntropyLabelSmooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L400-L432"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.CrossEntropyLabelSmooth" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></p>
+<p>Cross entropy loss with label smoothing regularizer
+:num_classes (int): number of classes
+:epsilon (float): weight</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="spann.model.CrossEntropyLabelSmooth.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L416-L432"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.CrossEntropyLabelSmooth.forward" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Inputs<span class="colon">:</span></dt>
+<dd class="field-odd"><p>prediction matrix (before softmax) with shape (batch_size, num_classes)</p>
+</dd>
+<dt class="field-even">Targets<span class="colon">:</span></dt>
+<dd class="field-even"><p>ground truth labels with shape (num_classes)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spann.model.ubot_CCD">
+<span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">ubot_CCD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stopThr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L435-L458"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.ubot_CCD" title="Permalink to this definition"></a></dt>
+<dd><p>Unbalanced optimal transport function
+:sim: similarity matrix between two distributions
+:beta: marginal distribution of the transport object
+:return: pseudo label computed from the tranport plan, updated marginal distribution of the transport object, normarlized transport plan, confidence score of the transport plan</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spann.model.ensemble_score">
+<span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">ensemble_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logit_tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence_ot</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L460-L470"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.ensemble_score" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spann.model.mixup_target">
+<span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">mixup_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_batch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L472-L480"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.mixup_target" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spann.model.pdists">
+<span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">pdists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">squared</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L482-L491"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.pdists" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spann.model.SPANN_model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">SPANN_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_num</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L493-L1198"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.SPANN_model" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>SPANN model, using scRNA reference dataset to annotate spatial transcriptome dataset</p>
+<dl class="field-list simple">
+<dt class="field-odd">X_dim<span class="colon">:</span></dt>
+<dd class="field-odd"><p>input dimension for the encoder</p>
+</dd>
+<dt class="field-even">Z_dim<span class="colon">:</span></dt>
+<dd class="field-even"><p>latent feature dimension</p>
+</dd>
+<dt class="field-odd">Enc<span class="colon">:</span></dt>
+<dd class="field-odd"><p>encoder parameters, for example, [['fc', 1024, 1, 'relu'], ['fc', 16, '', '']]</p>
+</dd>
+<dt class="field-even">Dec<span class="colon">:</span></dt>
+<dd class="field-even"><p>decoder parameters, dec is a set {cm_dec_params, spa_dec_params, rna_dec_params}, each element shapes like enc</p>
+</dd>
+<dt class="field-odd">Class_num<span class="colon">:</span></dt>
+<dd class="field-odd"><p>number of scRNA-seq cell types</p>
+</dd>
+<dt class="field-even">Device<span class="colon">:</span></dt>
+<dd class="field-even"><p>device on which SPAMM model is aranged</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="spann.model.SPANN_model.train">
+<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_cm_dl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_cm_dl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_sp_ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_sp_ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatial_coor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_source_cm_dl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_target_cm_dl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_types</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_recon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_kl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_spa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_cd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_nb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">novel_cell_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">miditer1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">miditer2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">miditer3</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_freq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L515-L826"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.SPANN_model.train" title="Permalink to this definition"></a></dt>
+<dd><p>Training and evaluating function for SPANN applying on test spatial dataset with ground truth labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Source_cm_dl<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch dataloader of the common genes scRNA-seq data</p>
+</dd>
+<dt class="field-even">Target_cm_dl<span class="colon">:</span></dt>
+<dd class="field-even"><p>torch dataloader of the common genes spatial data</p>
+</dd>
+<dt class="field-odd">Source_sp_ds<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch dataset of the scRNA-seq specific genes data</p>
+</dd>
+<dt class="field-even">Target_sp_ds<span class="colon">:</span></dt>
+<dd class="field-even"><p>torch dataset of the spatial specific genes data</p>
+</dd>
+<dt class="field-odd">Spatial_coor<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas dataframe of the raw spatial coordinates, column names ['X','Y']</p>
+</dd>
+<dt class="field-even">Test_source_cm_dl<span class="colon">:</span></dt>
+<dd class="field-even"><p>torch dataloader of the common genes scRNA-seq data for test</p>
+</dd>
+<dt class="field-odd">Test_target_cm_dl<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch dataloader of the common genes spatial data for test</p>
+</dd>
+<dt class="field-even">Source_labels<span class="colon">:</span></dt>
+<dd class="field-even"><p>integer labels for scRNA-seq data</p>
+</dd>
+<dt class="field-odd">Cell_types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of all cell types exist in scRNA-seq dataset</p>
+</dd>
+<dt class="field-even">Lr<span class="colon">:</span></dt>
+<dd class="field-even"><p>learning rate for VAE and classifier, default=1e-4</p>
+</dd>
+<dt class="field-odd">Lamnda_recon<span class="colon">:</span></dt>
+<dd class="field-odd"><p>training weight for the reconstruction loss, default=2000</p>
+</dd>
+<dt class="field-even">Lambda_kl<span class="colon">:</span></dt>
+<dd class="field-even"><p>training weight for the KL-divergence loss, default=0.5</p>
+</dd>
+<dt class="field-odd">Lambda_spa<span class="colon">:</span></dt>
+<dd class="field-odd"><p>training weight for the adjacency loss, default=0.5, we recomend to set it smaller when the spatial expression pattern is weak</p>
+</dd>
+<dt class="field-even">Lambda_cd<span class="colon">:</span></dt>
+<dd class="field-even"><p>training weight for the unbalanced optimal transport alignment loss, default=0.001, we recomend to set it higher when the gap between scRNA-seq and spatial datasets is big</p>
+</dd>
+<dt class="field-odd">Lambda_nb<span class="colon">:</span></dt>
+<dd class="field-odd"><p>training weight for the neighbor loss, default=0.1</p>
+</dd>
+<dt class="field-even">Mu<span class="colon">:</span></dt>
+<dd class="field-even"><p>updating speed of beta by moving average, default=0.5</p>
+</dd>
+<dt class="field-odd">Resolution<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the expected minimum proportion of known cells, 0 means no constraints on novel cell discovery and 1 means no novel cells, default=0.5</p>
+</dd>
+<dt class="field-even">Novel_cell_test<span class="colon">:</span></dt>
+<dd class="field-even"><p>whether to apply dip test and compute BC co-efficient to adaptively select resolution, default=True</p>
+</dd>
+<dt class="field-odd">Maxiter<span class="colon">:</span></dt>
+<dd class="field-odd"><p>maximum iteration, default=6000</p>
+</dd>
+<dt class="field-even">Miditer1<span class="colon">:</span></dt>
+<dd class="field-even"><p>after which iteration SPANN starts to conduct UOT alignment, default=2000</p>
+</dd>
+<dt class="field-odd">Miditer2<span class="colon">:</span></dt>
+<dd class="field-odd"><p>after which iteration SPANN starts to train with neighbor loss, default=5000</p>
+</dd>
+<dt class="field-even">Miditer3<span class="colon">:</span></dt>
+<dd class="field-even"><p>after which iteration SPANN starts to train with adjacency loss, default=4000</p>
+</dd>
+<dt class="field-odd">Test_freq<span class="colon">:</span></dt>
+<dd class="field-odd"><p>test frequency, default=1000</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>two AnnData objects, adata_source and adata_target, containing the spatial coordinates, latent embeddings, E-scores, predictions and etc.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spann.model.SPANN_model.train_eval">
+<span class="sig-name descname"><span class="pre">train_eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_cm_dl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_cm_dl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_sp_ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_sp_ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatial_coor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_source_cm_dl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_target_cm_dl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_types</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">common_cell_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_recon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_kl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_spa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_cd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_nb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">novel_cell_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">miditer1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">miditer2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">miditer3</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_freq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/model.py#L828-L1198"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.SPANN_model.train_eval" title="Permalink to this definition"></a></dt>
+<dd><p>Training and evaluating function for SPANN applying on test spatial dataset with ground truth labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Source_cm_dl<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch dataloader of the common genes scRNA-seq data</p>
+</dd>
+<dt class="field-even">Target_cm_dl<span class="colon">:</span></dt>
+<dd class="field-even"><p>torch dataloader of the common genes spatial data</p>
+</dd>
+<dt class="field-odd">Source_sp_ds<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch dataset of the scRNA-seq specific genes data</p>
+</dd>
+<dt class="field-even">Target_sp_ds<span class="colon">:</span></dt>
+<dd class="field-even"><p>torch dataset of the spatial specific genes data</p>
+</dd>
+<dt class="field-odd">Spatial_coor<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas dataframe of the raw spatial coordinates, column names ['X','Y']</p>
+</dd>
+<dt class="field-even">Test_source_cm_dl<span class="colon">:</span></dt>
+<dd class="field-even"><p>torch dataloader of the common genes scRNA-seq data for test or validate</p>
+</dd>
+<dt class="field-odd">Test_target_cm_dl<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch dataloader of the common genes spatial data for test or validate</p>
+</dd>
+<dt class="field-even">Source_labels<span class="colon">:</span></dt>
+<dd class="field-even"><p>integer labels for scRNA-seq data</p>
+</dd>
+<dt class="field-odd">Target_labels<span class="colon">:</span></dt>
+<dd class="field-odd"><p>integer labels for spatial data</p>
+</dd>
+<dt class="field-even">Cell_types<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of all cell types exist in scRNA-seq or spatial datasets</p>
+</dd>
+<dt class="field-odd">Common_cell_types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of cell types exist in both scRNA-seq and spatial datasets</p>
+</dd>
+<dt class="field-even">Lr<span class="colon">:</span></dt>
+<dd class="field-even"><p>learning rate for VAE and classifier, default=1e-4</p>
+</dd>
+<dt class="field-odd">Lamnda_recon<span class="colon">:</span></dt>
+<dd class="field-odd"><p>training weight for the reconstruction loss, default=2000</p>
+</dd>
+<dt class="field-even">Lambda_kl<span class="colon">:</span></dt>
+<dd class="field-even"><p>training weight for the KL-divergence loss, default=0.5</p>
+</dd>
+<dt class="field-odd">Lambda_spa<span class="colon">:</span></dt>
+<dd class="field-odd"><p>training weight for the adjacency loss, default=0.5, we recomend to set it smaller when the spatial expression pattern is weak</p>
+</dd>
+<dt class="field-even">Lambda_cd<span class="colon">:</span></dt>
+<dd class="field-even"><p>training weight for the unbalanced optimal transport alignment loss, default=0.001, we recomend to set it higher when the gap between scRNA-seq and spatial datasets is big</p>
+</dd>
+<dt class="field-odd">Lambda_nb<span class="colon">:</span></dt>
+<dd class="field-odd"><p>training weight for the neighbor loss, default=0.1</p>
+</dd>
+<dt class="field-even">Mu<span class="colon">:</span></dt>
+<dd class="field-even"><p>updating speed of beta by moving average, default=0.5</p>
+</dd>
+<dt class="field-odd">Resolution<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the expected minimum proportion of known cells, 0 means no constraints on novel cell discovery and 1 means no novel cells, default=0.5</p>
+</dd>
+<dt class="field-even">Novel_cell_test<span class="colon">:</span></dt>
+<dd class="field-even"><p>whether to apply dip test and compute BC co-efficient to adaptively select resolution, default=True</p>
+</dd>
+<dt class="field-odd">Maxiter<span class="colon">:</span></dt>
+<dd class="field-odd"><p>maximum iteration, default=6000</p>
+</dd>
+<dt class="field-even">Miditer1<span class="colon">:</span></dt>
+<dd class="field-even"><p>after which iteration SPANN starts to conduct UOT alignment, default=2000</p>
+</dd>
+<dt class="field-odd">Miditer2<span class="colon">:</span></dt>
+<dd class="field-odd"><p>after which iteration SPANN starts to train with neighbor loss, default=5000</p>
+</dd>
+<dt class="field-even">Miditer3<span class="colon">:</span></dt>
+<dd class="field-even"><p>after which iteration SPANN starts to train with adjacency loss, default=4000</p>
+</dd>
+<dt class="field-odd">Test_freq<span class="colon">:</span></dt>
+<dd class="field-odd"><p>test frequency, default=1000</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>two AnnData objects, adata_source and adata_target, containing the spatial coordinates, latent embeddings, E-scores, predictions and etc.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../functions/index.html" class="btn btn-neutral float-left" title="spann.functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../preprocess/index.html" class="btn btn-neutral float-right" title="spann.preprocess" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, michaelGuo1204.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>spann.functions &mdash; spann</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=525cde36"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            spann
+              <img src="../_static/logo_200w.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to spann's documentation!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MDTest.html">Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">spann</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">spann.functions</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/michaelGuo1204/SPANN-torch/blob/main/docs/source/generated/spann.functions.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-spann.functions">
+<span id="spann-functions"></span><h1>spann.functions<a class="headerlink" href="#module-spann.functions" title="Permalink to this heading"></a></h1>
+<p class="rubric">Functions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spann.functions.distribution_plot" title="spann.functions.distribution_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distribution_plot</span></code></a>(Escore_bank, threshold_test)</p></td>
+<td><p>show the distribution of spatial data E-scores :Escore_bank: learned E-scores for spatial data :threshold_test: the test threshold learned by SPANN :bins: how many slices the E-score distribution is divided into, default=20 :ylim: the maximum value of y axis, dafault=180</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spann.functions.ftest" title="spann.functions.ftest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ftest</span></code></a>(s1, s2)</p></td>
+<td><p>f-test for two distribtuions</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spann.functions.ttest_ind_fun" title="spann.functions.ttest_ind_fun"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ttest_ind_fun</span></code></a>(s1, s2)</p></td>
+<td><p>t-test for two distributions</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="spann.functions.ftest">
+<span class="sig-prename descclassname"><span class="pre">spann.functions.</span></span><span class="sig-name descname"><span class="pre">ftest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/functions.py#L4-L20"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.functions.ftest" title="Permalink to this definition"></a></dt>
+<dd><p>f-test for two distribtuions</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spann.functions.ttest_ind_fun">
+<span class="sig-prename descclassname"><span class="pre">spann.functions.</span></span><span class="sig-name descname"><span class="pre">ttest_ind_fun</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/functions.py#L22-L33"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.functions.ttest_ind_fun" title="Permalink to this definition"></a></dt>
+<dd><p>t-test for two distributions</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spann.functions.distribution_plot">
+<span class="sig-prename descclassname"><span class="pre">spann.functions.</span></span><span class="sig-name descname"><span class="pre">distribution_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Escore_bank</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">180</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/cc3cf7d0cc948a5b733cde96116147ab4e663bf2/spann/functions.py#L35-L70"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.functions.distribution_plot" title="Permalink to this definition"></a></dt>
+<dd><p>show the distribution of spatial data E-scores
+:Escore_bank: learned E-scores for spatial data
+:threshold_test: the test threshold learned by SPANN
+:bins: how many slices the E-score distribution is divided into, default=20
+:ylim: the maximum value of y axis, dafault=180</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, michaelGuo1204.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+:py:mod:`spann.functions`
+=========================
+
+.. py:module:: spann.functions
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   spann.functions.ftest
+   spann.functions.ttest_ind_fun
+   spann.functions.distribution_plot
+
+
+
+.. py:function:: ftest(s1, s2)
+
+   f-test for two distribtuions
+
+
+.. py:function:: ttest_ind_fun(s1, s2)
+
+   t-test for two distributions
+
+
+.. py:function:: distribution_plot(Escore_bank, threshold_test, bins=20, ylim=180)
+
+   show the distribution of spatial data E-scores
+   :Escore_bank: learned E-scores for spatial data
+   :threshold_test: the test threshold learned by SPANN
+   :bins: how many slices the E-score distribution is divided into, default=20
+   :ylim: the maximum value of y axis, dafault=180
+
+
