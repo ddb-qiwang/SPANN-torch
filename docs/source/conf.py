@@ -41,9 +41,11 @@ release = __version__
 extensions = [
     "sphinx_rtd_theme",
     "sphinx.ext.autodoc",
+    "autoapi.extension",
     "sphinx.ext.napoleon",
     "sphinx.ext.linkcode",
     "sphinx_copybutton",
+    "myst_parser",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -177,3 +179,4 @@ html_context = {
 html_css_files = [
     "custom.css",
 ]
+autoapi_dirs = ["../../spann"]

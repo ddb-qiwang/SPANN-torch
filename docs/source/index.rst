@@ -11,8 +11,7 @@ Welcome to spann's documentation!
    self
    Installation
    Overview
-   api
-
+   MDTest
 
 
 Indices and tables

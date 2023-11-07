@@ -1,0 +1,18 @@
+﻿spann.functions
+===============
+
+.. automodule:: spann.functions
+
+
+
+
+
+
+
+   .. rubric:: Functions
+
+   .. autosummary::
+
+      distribution_plot
+      ftest
+      ttest_ind_fun
