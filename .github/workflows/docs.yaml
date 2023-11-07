@@ -20,5 +20,5 @@ jobs:
         with:
           publish_branch: docs
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docbuild/
+          publish_dir: docbuild/html/
           force_orphan: true
