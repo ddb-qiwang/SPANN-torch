@@ -1,7 +1,7 @@
 API
 ===
 
-.. automodule:: pythontemplate
+.. automodule:: spann
    :members:
    :undoc-members:
    :show-inheritance:
