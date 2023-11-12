@@ -2,6 +2,13 @@
 jupyter notebooks for bioinformatics paper "SPANN: Annotating single-cell resolution spatial transcriptome data with scRNA-seq data" (under peer-review)
 ![image](https://github.com/ddb-qiwang/SPANN/assets/52522175/2d355850-12b9-4fe1-9bff-6a75d24b4ec8)
 
+# Install
+
+```
+pip install spann
+```
+
+readthedocs page at https://ddb-qiwang.github.io/SPANN-torch/
 
 # File Descriptions and data requirement
 SPANN is a single-cell resolution spatial transcriptome data annotator. With a well-annotated reference scRNA-seq data, one can accurately identify cell identifications as well as discover novel cells.

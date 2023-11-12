@@ -10,12 +10,12 @@ style = "semver"
 [tool.poetry]
 name = "spann"
 version = "0.0.0"  # Do not change, let poetry-dynamic-versioning handle it.
-homepage = "https://github.com/michaelGuo1204/SPANN-torch"
-repository = "https://github.com/michaelGuo1204/SPANN-torch"
+homepage = "https://github.com/ddb-qiwang/SPANN-torch"
+repository = "https://github.com/ddb-qiwang/SPANN-torch"
 license = "Apache-2.0"
 description = ""
-authors = ["michaelGuo1204"]
-readme = "README.rst"
+authors = ["ddb-qiwang"]
+readme = "README.md"
 packages = [{include = "spann"}]
 include = ["spann/*.so", "spann/*.pyd"]  # Compiled extensions
 
