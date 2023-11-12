@@ -8,36 +8,34 @@ vcs = "git"
 style = "semver"
 
 [tool.poetry]
-name = "pythontemplate"
+name = "spann"
 version = "0.0.0"  # Do not change, let poetry-dynamic-versioning handle it.
-homepage = "https://github.com/GIT_USERNAME/GIT_REPONAME"
-repository = "https://github.com/GIT_USERNAME/GIT_REPONAME"
+homepage = "https://github.com/michaelGuo1204/SPANN-torch"
+repository = "https://github.com/michaelGuo1204/SPANN-torch"
 license = "Apache-2.0"
 description = ""
-authors = ["YOUR_NAME_HERE"]
+authors = ["michaelGuo1204"]
 readme = "README.rst"
-packages = [{include = "pythontemplate"}]
-include = ["pythontemplate/*.so", "pythontemplate/*.pyd"]  # Compiled extensions
+packages = [{include = "spann"}]
+include = ["spann/*.so", "spann/*.pyd"]  # Compiled extensions
 
 [tool.poetry.build]
 generate-setup-file = false
 
 [tool.poetry.scripts]
-pythontemplate = "pythontemplate.cli.main:run_app"
 
 [tool.poetry.dependencies]
 # Be as loose as possible if writing a library.
 python = "^3.8"
-typer = ">=0.9.0"
 typing-extensions = "^4.8.0"
-rich = ">=10.11.0"
 
 [tool.poetry.group.docs.dependencies]
 sphinx = "~7.1.2"
 sphinx_rtd_theme = "~1.3.0"
 gitpython = ">=3.1.31"
 sphinx-copybutton = "^0.5.2"
-
+myst_parser = "^2.0.0"
+nbsphinx="0.9.3"
 [tool.poetry.group.dev.dependencies]
 coverage = {extras = ["toml"], version = ">=5.1"}
 pre_commit = ">=2.16.0"
@@ -172,7 +170,7 @@ skip = 'poetry.lock,'
 
 [tool.creosote]
 venvs=[".venv"]
-paths=["pythontemplate"]
+paths=["spann"]
 deps-file="pyproject.toml"
 sections=["tool.poetry.dependencies"]
 exclude-deps =[

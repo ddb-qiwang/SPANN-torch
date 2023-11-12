@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial 1 &mdash; spann</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/nbsphinx-code-cells.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=525cde36"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tutorial 2" href="tutorial2_seq.html" />
+    <link rel="prev" title="Tutorial" href="../tut.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            spann
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to spann's documentation!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tut.html">Tutorial</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tutorial 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial2_seq.html">Tutorial 2</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">spann</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../tut.html">Tutorial</a></li>
+      <li class="breadcrumb-item active">Tutorial 1</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/michaelGuo1204/SPANN-torch/blob/main/docs/source/Tutorial/tutorial1_seq.ipynb" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Tutorial-1">
+<h1>Tutorial 1<a class="headerlink" href="#Tutorial-1" title="Permalink to this heading"></a></h1>
+<p>Annotate unlabeled seqfish data with novel cell detection</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import torch
+import scanpy as sc
+import pandas as pd
+import numpy as np
+
+# read h5ad rna/seqfish data
+device = torch.device(&#39;cuda:2&#39;)
+adata_rna = sc.read_h5ad(&#39;/data/msyuan/Cross-omics-Annotator/SPANN_Package/sample_data/adata_rna.h5ad&#39;)
+adata_seqfish = sc.read_h5ad(&#39;/data/msyuan/Cross-omics-Annotator/SPANN_Package/sample_data/adata_seqfish_40.h5ad&#39;)
+# the original data has cell type information
+adata_seqfish.obs = adata_seqfish.obs.drop(&#39;cell_type&#39;, axis=1)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># preprocess to get torch datasets and dataloaders
+from preprocess import *
+
+adata_cm, adata_spa, adata_rna = anndata_preprocess(adata_seqfish, adata_rna, spatial_labels=False)
+source_sp_ds,target_sp_ds,source_cm_dl,target_cm_dl,test_source_cm_dl,test_target_cm_dl = generate_dataloaders(adata_cm,adata_spa,adata_rna)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/data/msyuan/anaconda3/lib/python3.7/site-packages/anndata/_core/anndata.py:1785: FutureWarning: X.dtype being converted to np.float32 from float64. In the next version of anndata (0.9) conversion will not be automatic. Pass dtype explicitly to avoid this warning. Pass `AnnData(X, dtype=X.dtype, ...)` to get the future behavour.
+  [AnnData(sparse.csr_matrix(a.shape), obs=a.obs) for a in all_adatas],
+/data/msyuan/Cross-omics-Annotator/SPANN_Package/preprocess.py:68: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  adata_cm.obs[&#34;labels&#34;][adata_cm.obs[&#34;domain_id&#34;]==&#39;1&#39;] = -1
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+rna_labels: [ 0  1  2  3  4  5  6  7  8  9 10]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># contruct SPANN model
+from model import *
+
+enc,dec,x_dim,z_dim = generate_ae_params(adata_cm, adata_spa, adata_rna)
+spann = SPANN_model(x_dim, z_dim, enc, dec, class_num=len(adata_rna.obs[&#39;cell_type&#39;].unique()), device=device)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[easydl] tensorflow not available!
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># train SPANN model without validation
+
+source_sp_ds,target_sp_ds,source_cm_dl,target_cm_dl,\
+test_source_cm_dl,test_target_cm_dl = generate_dataloaders(adata_cm,adata_spa,adata_rna,batch_size=256)
+adata_source, adata_target, threshold_test = spann.train(source_cm_dl,target_cm_dl,source_sp_ds,target_sp_ds,adata_spa.obs[[&quot;X&quot;,&quot;Y&quot;]],
+                                                         test_source_cm_dl, test_target_cm_dl,np.array(adata_rna.obs[&#39;labels&#39;]),np.unique(adata_rna.obs[&#39;cell_type&#39;]),
+                                                         lr=2e-4,resolution=0.5,lambda_spa=0.001,lambda_cd=0.001,lambda_nb=10,
+                                                         maxiter=5000,miditer1=2000,miditer2=4000,miditer3=4000)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+#Iter 100: Reconstruction loss: 2.243307, KL loss: 99.192215, CLS loss: 1.650479, Spatial loss: 0.000000, CCD loss: 0.000000, Neighbor loss: 0.000000
+#Iter 200: Reconstruction loss: 2.166400, KL loss: 129.111908, CLS loss: 1.486549, Spatial loss: 0.000000, CCD loss: 0.000000, Neighbor loss: 0.000000
+#Iter 300: Reconstruction loss: 2.134961, KL loss: 85.156876, CLS loss: 1.276017, Spatial loss: 0.000000, CCD loss: 0.000000, Neighbor loss: 0.000000
+#Iter 400: Reconstruction loss: 2.098627, KL loss: 87.590103, CLS loss: 1.202821, Spatial loss: 0.000000, CCD loss: 0.000000, Neighbor loss: 0.000000
+#Iter 500: Reconstruction loss: 2.072297, KL loss: 74.694458, CLS loss: 1.010152, Spatial loss: 0.000000, CCD loss: 0.000000, Neighbor loss: 0.000000
+#Iter 600: Reconstruction loss: 2.039676, KL loss: 72.406609, CLS loss: 0.963126, Spatial loss: 0.000000, CCD loss: 0.000000, Neighbor loss: 0.000000
+#Iter 700: Reconstruction loss: 2.001389, KL loss: 87.180473, CLS loss: 0.875432, Spatial loss: 0.000000, CCD loss: 0.000000, Neighbor loss: 0.000000
+#Iter 800: Reconstruction loss: 1.967878, KL loss: 79.031860, CLS loss: 0.822606, Spatial loss: 0.000000, CCD loss: 0.000000, Neighbor loss: 0.000000
+#Iter 900: Reconstruction loss: 1.956452, KL loss: 71.455574, CLS loss: 0.811231, Spatial loss: 0.000000, CCD loss: 0.000000, Neighbor loss: 0.000000
+#Iter 1000: Reconstruction loss: 1.925262, KL loss: 68.426918, CLS loss: 0.810287, Spatial loss: 0.000000, CCD loss: 0.000000, Neighbor loss: 0.000000
+#Iter 1100: Reconstruction loss: 1.891046, KL loss: 73.906616, CLS loss: 0.767314, Spatial loss: 0.000000, CCD loss: 0.000000, Neighbor loss: 0.000000
+#Iter 1200: Reconstruction loss: 1.883351, KL loss: 72.191177, CLS loss: 0.779271, Spatial loss: 0.000000, CCD loss: 0.000000, Neighbor loss: 0.000000
+#Iter 1300: Reconstruction loss: 1.837919, KL loss: 71.268295, CLS loss: 0.757656, Spatial loss: 0.000000, CCD loss: 0.000000, Neighbor loss: 0.000000
+#Iter 1400: Reconstruction loss: 1.822573, KL loss: 61.659828, CLS loss: 0.761432, Spatial loss: 0.000000, CCD loss: 0.000000, Neighbor loss: 0.000000
+#Iter 1500: Reconstruction loss: 1.792225, KL loss: 75.016464, CLS loss: 0.726153, Spatial loss: 0.000000, CCD loss: 0.000000, Neighbor loss: 0.000000
+#Iter 1600: Reconstruction loss: 1.766414, KL loss: 70.794441, CLS loss: 0.684306, Spatial loss: 0.000000, CCD loss: 0.000000, Neighbor loss: 0.000000
+#Iter 1700: Reconstruction loss: 1.743973, KL loss: 62.976913, CLS loss: 0.764387, Spatial loss: 0.000000, CCD loss: 0.000000, Neighbor loss: 0.000000
+#Iter 1800: Reconstruction loss: 1.714468, KL loss: 67.446396, CLS loss: 0.683701, Spatial loss: 0.000000, CCD loss: 0.000000, Neighbor loss: 0.000000
+#Iter 1900: Reconstruction loss: 1.699200, KL loss: 70.562225, CLS loss: 0.677719, Spatial loss: 0.000000, CCD loss: 0.000000, Neighbor loss: 0.000000
+#Iter 2000: Reconstruction loss: 1.674884, KL loss: 53.296318, CLS loss: 0.691501, Spatial loss: 0.000000, CCD loss: 0.000000, Neighbor loss: 0.000000
+bimodality of dip test: 0.0 True
+bimodality coefficient:(&gt;0.555 indicates bimodality) 0.46228265367831095 False
+ood sample exists: True
+#Iter 2100: Reconstruction loss: 1.655199, KL loss: 51.320908, CLS loss: 0.692178, Spatial loss: 0.000000, CCD loss: 0.154241, Neighbor loss: 0.000000
+#Iter 2200: Reconstruction loss: 1.633668, KL loss: 52.612015, CLS loss: 0.673292, Spatial loss: 0.000000, CCD loss: 0.152371, Neighbor loss: 0.000000
+#Iter 2300: Reconstruction loss: 1.604546, KL loss: 55.981277, CLS loss: 0.692332, Spatial loss: 0.000000, CCD loss: 0.160147, Neighbor loss: 0.000000
+#Iter 2400: Reconstruction loss: 1.586772, KL loss: 50.015575, CLS loss: 0.716590, Spatial loss: 0.000000, CCD loss: 0.174053, Neighbor loss: 0.000000
+#Iter 2500: Reconstruction loss: 1.574624, KL loss: 47.568970, CLS loss: 0.680545, Spatial loss: 0.000000, CCD loss: 0.167082, Neighbor loss: 0.000000
+#Iter 2600: Reconstruction loss: 1.542749, KL loss: 48.152237, CLS loss: 0.651239, Spatial loss: 0.000000, CCD loss: 0.192366, Neighbor loss: 0.000000
+#Iter 2700: Reconstruction loss: 1.525012, KL loss: 48.414207, CLS loss: 0.681702, Spatial loss: 0.000000, CCD loss: 0.196193, Neighbor loss: 0.000000
+#Iter 2800: Reconstruction loss: 1.507910, KL loss: 44.849693, CLS loss: 0.675833, Spatial loss: 0.000000, CCD loss: 0.185839, Neighbor loss: 0.000000
+#Iter 2900: Reconstruction loss: 1.484686, KL loss: 47.839211, CLS loss: 0.639085, Spatial loss: 0.000000, CCD loss: 0.161256, Neighbor loss: 0.000000
+#Iter 3000: Reconstruction loss: 1.463079, KL loss: 45.775978, CLS loss: 0.637189, Spatial loss: 0.000000, CCD loss: 0.187220, Neighbor loss: 0.000000
+#Iter 3100: Reconstruction loss: 1.448479, KL loss: 44.424080, CLS loss: 0.676758, Spatial loss: 0.000000, CCD loss: 0.156760, Neighbor loss: 0.000000
+#Iter 3200: Reconstruction loss: 1.429083, KL loss: 44.934151, CLS loss: 0.665666, Spatial loss: 0.000000, CCD loss: 0.194844, Neighbor loss: 0.000000
+#Iter 3300: Reconstruction loss: 1.409750, KL loss: 43.566780, CLS loss: 0.635228, Spatial loss: 0.000000, CCD loss: 0.176762, Neighbor loss: 0.000000
+#Iter 3400: Reconstruction loss: 1.393285, KL loss: 43.252029, CLS loss: 0.658095, Spatial loss: 0.000000, CCD loss: 0.150202, Neighbor loss: 0.000000
+#Iter 3500: Reconstruction loss: 1.374356, KL loss: 42.386517, CLS loss: 0.657583, Spatial loss: 0.000000, CCD loss: 0.188383, Neighbor loss: 0.000000
+#Iter 3600: Reconstruction loss: 1.357847, KL loss: 41.392021, CLS loss: 0.684353, Spatial loss: 0.000000, CCD loss: 0.203441, Neighbor loss: 0.000000
+#Iter 3700: Reconstruction loss: 1.340388, KL loss: 41.309738, CLS loss: 0.640194, Spatial loss: 0.000000, CCD loss: 0.172108, Neighbor loss: 0.000000
+#Iter 3800: Reconstruction loss: 1.325923, KL loss: 40.485649, CLS loss: 0.673848, Spatial loss: 0.000000, CCD loss: 0.206285, Neighbor loss: 0.000000
+#Iter 3900: Reconstruction loss: 1.308262, KL loss: 39.828285, CLS loss: 0.652403, Spatial loss: 0.000000, CCD loss: 0.156316, Neighbor loss: 0.000000
+#Iter 4000: Reconstruction loss: 1.294008, KL loss: 38.733986, CLS loss: 0.642383, Spatial loss: 0.000000, CCD loss: 0.173009, Neighbor loss: 0.000000
+#Iter 4100: Reconstruction loss: 1.277607, KL loss: 38.744164, CLS loss: 0.667137, Spatial loss: 0.080485, CCD loss: 0.159806, Neighbor loss: 0.010372
+#Iter 4200: Reconstruction loss: 1.266890, KL loss: 38.003601, CLS loss: 0.684546, Spatial loss: 0.083020, CCD loss: 0.204483, Neighbor loss: 0.008979
+#Iter 4300: Reconstruction loss: 1.249560, KL loss: 37.107880, CLS loss: 0.642747, Spatial loss: 0.081885, CCD loss: 0.131490, Neighbor loss: 0.008199
+#Iter 4400: Reconstruction loss: 1.234681, KL loss: 36.372559, CLS loss: 0.622374, Spatial loss: 0.080230, CCD loss: 0.156410, Neighbor loss: 0.009692
+#Iter 4500: Reconstruction loss: 1.222244, KL loss: 36.029549, CLS loss: 0.692019, Spatial loss: 0.090740, CCD loss: 0.174686, Neighbor loss: 0.008499
+#Iter 4600: Reconstruction loss: 1.210039, KL loss: 35.358047, CLS loss: 0.635472, Spatial loss: 0.092441, CCD loss: 0.144400, Neighbor loss: 0.007834
+#Iter 4700: Reconstruction loss: 1.193886, KL loss: 35.613060, CLS loss: 0.628861, Spatial loss: 0.086617, CCD loss: 0.157079, Neighbor loss: 0.008221
+#Iter 4800: Reconstruction loss: 1.183631, KL loss: 34.358025, CLS loss: 0.667877, Spatial loss: 0.095177, CCD loss: 0.160533, Neighbor loss: 0.008850
+#Iter 4900: Reconstruction loss: 1.170104, KL loss: 34.040646, CLS loss: 0.646944, Spatial loss: 0.088315, CCD loss: 0.155162, Neighbor loss: 0.007485
+#Iter 5000: Reconstruction loss: 1.155968, KL loss: 33.821548, CLS loss: 0.648810, Spatial loss: 0.089221, CCD loss: 0.172562, Neighbor loss: 0.008848
+#Iter 5100: Reconstruction loss: 1.146963, KL loss: 33.721298, CLS loss: 0.660845, Spatial loss: 0.091244, CCD loss: 0.159615, Neighbor loss: 0.008255
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># distribution plot
+from functions import *
+
+dist_fig = distribution_plot(adata_target.obs[&#39;Escore&#39;], threshold_test, bins=25, ylim=4000)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+WARNING:matplotlib.font_manager:findfont: Font family [&#39;Arial&#39;] not found. Falling back to DejaVu Sans.
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Tutorial_tutorial1_seq_5_1.png" src="../_images/Tutorial_tutorial1_seq_5_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># umap visualizations
+# umap plot colored by source and cell types
+
+adata_total = sc.AnnData.concatenate(adata_source, adata_target)
+sc.pp.neighbors(adata_total, use_rep=&quot;X&quot;)
+sc.tl.umap(adata_total)
+sc.pl.umap(adata_total, color=&quot;source&quot;, show=True)
+sc.pl.umap(adata_total[adata_total.obs[&#39;source&#39;]==&#39;scRNA&#39;], color=&quot;cell_type&quot;, show=True)
+sc.pl.umap(adata_total[adata_total.obs[&#39;source&#39;]==&#39;Spatial&#39;], color=&quot;pred_cls&quot;, show=True)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Tutorial_tutorial1_seq_6_0.png" src="../_images/Tutorial_tutorial1_seq_6_0.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Tutorial_tutorial1_seq_6_1.png" src="../_images/Tutorial_tutorial1_seq_6_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Tutorial_tutorial1_seq_6_2.png" src="../_images/Tutorial_tutorial1_seq_6_2.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># spatial plot
+import seaborn as sns
+
+sns.lmplot(data=adata_target.obs, x=&#39;X&#39;, y=&#39;Y&#39;,hue=&#39;pred_cls&#39;,fit_reg=False, legend=True, legend_out=True, scatter_kws={&quot;s&quot;: 1})
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;seaborn.axisgrid.FacetGrid at 0x7fb98c115950&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Tutorial_tutorial1_seq_7_1.png" src="../_images/Tutorial_tutorial1_seq_7_1.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../tut.html" class="btn btn-neutral float-left" title="Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial2_seq.html" class="btn btn-neutral float-right" title="Tutorial 2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, michaelGuo1204.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
