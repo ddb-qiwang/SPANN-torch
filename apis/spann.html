@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPANN Model &mdash; spann</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=525cde36"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Function" href="functions.html" />
+    <link rel="prev" title="Preprocess" href="preprocess.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            spann
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to spann's documentation!</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preprocess.html">Preprocess</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SPANN Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#spann.model.SPANN_model"><code class="docutils literal notranslate"><span class="pre">SPANN_model</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#spann.model.SPANN_model.train"><code class="docutils literal notranslate"><span class="pre">SPANN_model.train()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spann.model.SPANN_model.train_eval"><code class="docutils literal notranslate"><span class="pre">SPANN_model.train_eval()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html">Function</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tut.html">Tutorial</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">spann</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api.html">API</a></li>
+      <li class="breadcrumb-item active">SPANN Model</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/michaelGuo1204/SPANN-torch/blob/main/docs/source/apis/spann.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="spann-model">
+<h1>SPANN Model<a class="headerlink" href="#spann-model" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="spann.model.SPANN_model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spann.model.</span></span><span class="sig-name descname"><span class="pre">SPANN_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_num</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/41889b49245f311c35352e8a0dd6f9eab98576dd/spann/model.py#L494-L1338"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.SPANN_model" title="Permalink to this definition"></a></dt>
+<dd><p>SPANN model, using scRNA reference dataset to annotate spatial transcriptome dataset</p>
+<dl class="field-list simple">
+<dt class="field-odd">X_dim<span class="colon">:</span></dt>
+<dd class="field-odd"><p>input dimension for the encoder</p>
+</dd>
+<dt class="field-even">Z_dim<span class="colon">:</span></dt>
+<dd class="field-even"><p>latent feature dimension</p>
+</dd>
+<dt class="field-odd">Enc<span class="colon">:</span></dt>
+<dd class="field-odd"><p>encoder parameters, for example, [['fc', 1024, 1, 'relu'], ['fc', 16, '', '']]</p>
+</dd>
+<dt class="field-even">Dec<span class="colon">:</span></dt>
+<dd class="field-even"><p>decoder parameters, dec is a set {cm_dec_params, spa_dec_params, rna_dec_params}, each element shapes like enc</p>
+</dd>
+<dt class="field-odd">Class_num<span class="colon">:</span></dt>
+<dd class="field-odd"><p>number of scRNA-seq cell types</p>
+</dd>
+<dt class="field-even">Device<span class="colon">:</span></dt>
+<dd class="field-even"><p>device on which SPAMM model is aranged</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="spann.model.SPANN_model.train">
+<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_cm_dl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_cm_dl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_sp_ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_sp_ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatial_coor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_source_cm_dl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_target_cm_dl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_types</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0002</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_recon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_kl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_spa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_cd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_nb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">novel_cell_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">miditer1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">miditer2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">miditer3</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_freq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/41889b49245f311c35352e8a0dd6f9eab98576dd/spann/model.py#L516-L887"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.SPANN_model.train" title="Permalink to this definition"></a></dt>
+<dd><p>Training and evaluating function for SPANN applying on test spatial dataset with ground truth labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Source_cm_dl<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch dataloader of the common genes scRNA-seq data</p>
+</dd>
+<dt class="field-even">Target_cm_dl<span class="colon">:</span></dt>
+<dd class="field-even"><p>torch dataloader of the common genes spatial data</p>
+</dd>
+<dt class="field-odd">Source_sp_ds<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch dataset of the scRNA-seq specific genes data</p>
+</dd>
+<dt class="field-even">Target_sp_ds<span class="colon">:</span></dt>
+<dd class="field-even"><p>torch dataset of the spatial specific genes data</p>
+</dd>
+<dt class="field-odd">Spatial_coor<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas dataframe of the raw spatial coordinates, column names ['X','Y']</p>
+</dd>
+<dt class="field-even">Test_source_cm_dl<span class="colon">:</span></dt>
+<dd class="field-even"><p>torch dataloader of the common genes scRNA-seq data for test</p>
+</dd>
+<dt class="field-odd">Test_target_cm_dl<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch dataloader of the common genes spatial data for test</p>
+</dd>
+<dt class="field-even">Source_labels<span class="colon">:</span></dt>
+<dd class="field-even"><p>integer labels for scRNA-seq data</p>
+</dd>
+<dt class="field-odd">Cell_types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of all cell types exist in scRNA-seq dataset</p>
+</dd>
+<dt class="field-even">Lr<span class="colon">:</span></dt>
+<dd class="field-even"><p>learning rate for VAE and classifier, default=1e-4</p>
+</dd>
+<dt class="field-odd">Lamnda_recon<span class="colon">:</span></dt>
+<dd class="field-odd"><p>training weight for the reconstruction loss, default=2000</p>
+</dd>
+<dt class="field-even">Lambda_kl<span class="colon">:</span></dt>
+<dd class="field-even"><p>training weight for the KL-divergence loss, default=0.5</p>
+</dd>
+<dt class="field-odd">Lambda_spa<span class="colon">:</span></dt>
+<dd class="field-odd"><p>training weight for the adjacency loss, default=0.1, we recomend to set it smaller when the spatial expression pattern is weak</p>
+</dd>
+<dt class="field-even">Lambda_cd<span class="colon">:</span></dt>
+<dd class="field-even"><p>training weight for the unbalanced optimal transport alignment loss, default=0.001, we recomend to set it higher when the gap between scRNA-seq and spatial datasets is big</p>
+</dd>
+<dt class="field-odd">Lambda_nb<span class="colon">:</span></dt>
+<dd class="field-odd"><p>training weight for the neighbor loss, default=0.1</p>
+</dd>
+<dt class="field-even">Mu<span class="colon">:</span></dt>
+<dd class="field-even"><p>updating speed of beta by moving average, default=0.5</p>
+</dd>
+<dt class="field-odd">Resolution<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the expected minimum proportion of known cells, 0 means no constraints on novel cell discovery and 1 means no novel cells, default=0.5</p>
+</dd>
+<dt class="field-even">Novel_cell_test<span class="colon">:</span></dt>
+<dd class="field-even"><p>whether to apply dip test and compute BC co-efficient to adaptively select resolution, default=True</p>
+</dd>
+<dt class="field-odd">Maxiter<span class="colon">:</span></dt>
+<dd class="field-odd"><p>maximum iteration, default=6000</p>
+</dd>
+<dt class="field-even">Miditer1<span class="colon">:</span></dt>
+<dd class="field-even"><p>after which iteration SPANN starts to conduct UOT alignment, default=2000</p>
+</dd>
+<dt class="field-odd">Miditer2<span class="colon">:</span></dt>
+<dd class="field-odd"><p>after which iteration SPANN starts to train with neighbor loss, default=5000</p>
+</dd>
+<dt class="field-even">Miditer3<span class="colon">:</span></dt>
+<dd class="field-even"><p>after which iteration SPANN starts to train with adjacency loss, default=4000</p>
+</dd>
+<dt class="field-odd">Test_freq<span class="colon">:</span></dt>
+<dd class="field-odd"><p>test frequency, default=1000</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>two AnnData objects, adata_source and adata_target, containing the spatial coordinates, latent embeddings, E-scores, predictions and etc.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spann.model.SPANN_model.train_eval">
+<span class="sig-name descname"><span class="pre">train_eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_cm_dl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_cm_dl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_sp_ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_sp_ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatial_coor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_source_cm_dl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_target_cm_dl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_types</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">common_cell_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0002</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_recon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_kl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_spa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_cd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_nb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">novel_cell_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">miditer1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">miditer2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">miditer3</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_freq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/michaelGuo1204/SPANN-torch/blob/41889b49245f311c35352e8a0dd6f9eab98576dd/spann/model.py#L889-L1338"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spann.model.SPANN_model.train_eval" title="Permalink to this definition"></a></dt>
+<dd><p>Training and evaluating function for SPANN applying on test spatial dataset with ground truth labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Source_cm_dl<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch dataloader of the common genes scRNA-seq data</p>
+</dd>
+<dt class="field-even">Target_cm_dl<span class="colon">:</span></dt>
+<dd class="field-even"><p>torch dataloader of the common genes spatial data</p>
+</dd>
+<dt class="field-odd">Source_sp_ds<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch dataset of the scRNA-seq specific genes data</p>
+</dd>
+<dt class="field-even">Target_sp_ds<span class="colon">:</span></dt>
+<dd class="field-even"><p>torch dataset of the spatial specific genes data</p>
+</dd>
+<dt class="field-odd">Spatial_coor<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas dataframe of the raw spatial coordinates, column names ['X','Y']</p>
+</dd>
+<dt class="field-even">Test_source_cm_dl<span class="colon">:</span></dt>
+<dd class="field-even"><p>torch dataloader of the common genes scRNA-seq data for test or validate</p>
+</dd>
+<dt class="field-odd">Test_target_cm_dl<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch dataloader of the common genes spatial data for test or validate</p>
+</dd>
+<dt class="field-even">Source_labels<span class="colon">:</span></dt>
+<dd class="field-even"><p>integer labels for scRNA-seq data</p>
+</dd>
+<dt class="field-odd">Target_labels<span class="colon">:</span></dt>
+<dd class="field-odd"><p>integer labels for spatial data</p>
+</dd>
+<dt class="field-even">Cell_types<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of all cell types exist in scRNA-seq or spatial datasets</p>
+</dd>
+<dt class="field-odd">Common_cell_types<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of cell types exist in both scRNA-seq and spatial datasets</p>
+</dd>
+<dt class="field-even">Lr<span class="colon">:</span></dt>
+<dd class="field-even"><p>learning rate for VAE and classifier, default=2e-4</p>
+</dd>
+<dt class="field-odd">Lamnda_recon<span class="colon">:</span></dt>
+<dd class="field-odd"><p>training weight for the reconstruction loss, default=2000</p>
+</dd>
+<dt class="field-even">Lambda_kl<span class="colon">:</span></dt>
+<dd class="field-even"><p>training weight for the KL-divergence loss, default=0.5</p>
+</dd>
+<dt class="field-odd">Lambda_spa<span class="colon">:</span></dt>
+<dd class="field-odd"><p>training weight for the adjacency loss, default=0.1, we recomend to set it smaller when the spatial expression pattern is weak</p>
+</dd>
+<dt class="field-even">Lambda_cd<span class="colon">:</span></dt>
+<dd class="field-even"><p>training weight for the unbalanced optimal transport alignment loss, default=0.001, we recomend to set it higher when the gap between scRNA-seq and spatial datasets is big</p>
+</dd>
+<dt class="field-odd">Lambda_nb<span class="colon">:</span></dt>
+<dd class="field-odd"><p>training weight for the neighbor loss, default=0.1</p>
+</dd>
+<dt class="field-even">Mu<span class="colon">:</span></dt>
+<dd class="field-even"><p>updating speed of beta by moving average, default=0.5</p>
+</dd>
+<dt class="field-odd">Resolution<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the expected minimum proportion of known cells, 0 means no constraints on novel cell discovery and 1 means no novel cells, default=0.5</p>
+</dd>
+<dt class="field-even">Novel_cell_test<span class="colon">:</span></dt>
+<dd class="field-even"><p>whether to apply dip test and compute BC co-efficient to adaptively select resolution, default=True</p>
+</dd>
+<dt class="field-odd">Maxiter<span class="colon">:</span></dt>
+<dd class="field-odd"><p>maximum iteration, default=6000</p>
+</dd>
+<dt class="field-even">Miditer1<span class="colon">:</span></dt>
+<dd class="field-even"><p>after which iteration SPANN starts to conduct UOT alignment, default=2000</p>
+</dd>
+<dt class="field-odd">Miditer2<span class="colon">:</span></dt>
+<dd class="field-odd"><p>after which iteration SPANN starts to train with neighbor loss, default=5000</p>
+</dd>
+<dt class="field-even">Miditer3<span class="colon">:</span></dt>
+<dd class="field-even"><p>after which iteration SPANN starts to train with adjacency loss, default=4000</p>
+</dd>
+<dt class="field-odd">Test_freq<span class="colon">:</span></dt>
+<dd class="field-odd"><p>test frequency, default=1000</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>two AnnData objects, adata_source and adata_target, containing the spatial coordinates, latent embeddings, E-scores, predictions and etc.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="preprocess.html" class="btn btn-neutral float-left" title="Preprocess" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="functions.html" class="btn btn-neutral float-right" title="Function" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, michaelGuo1204.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
