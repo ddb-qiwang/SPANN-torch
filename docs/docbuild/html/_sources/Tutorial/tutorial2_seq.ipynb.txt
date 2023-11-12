@@ -55,7 +55,7 @@
    ],
    "source": [
     "# preprocess to get torch datasets and dataloaders\n",
-    "from preprocess import *\n",
+    "from spann.preprocess import *\n",
     "\n",
     "adata_cm, adata_spa, adata_rna = anndata_preprocess(adata_seqfish, adata_rna, spatial_labels=True)\n",
     "source_sp_ds,target_sp_ds,source_cm_dl,target_cm_dl,test_source_cm_dl,test_target_cm_dl = generate_dataloaders(adata_cm,adata_spa,adata_rna)"
@@ -76,7 +76,7 @@
    ],
    "source": [
     "# contruct SPANN model\n",
-    "from model import *\n",
+    "from spann.model import *\n",
     "\n",
     "enc,dec,x_dim,z_dim = generate_ae_params(adata_cm, adata_spa, adata_rna)\n",
     "spann = SPANN_model(x_dim, z_dim, enc, dec, class_num=len(adata_rna.obs['cell_type'].unique()), device=device)"
@@ -205,7 +205,7 @@
    ],
    "source": [
     "# distribution plot\n",
-    "from functions import *\n",
+    "from spann.functions import *\n",
     "\n",
     "dist_fig = distribution_plot(adata_target.obs['Escore'], threshold_test, bins=25, ylim=4000)"
    ]
