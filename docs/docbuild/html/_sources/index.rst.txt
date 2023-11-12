@@ -9,6 +9,7 @@ Welcome to spann's documentation!
    :caption: Contents:
 
    self
+   install
    api 
    tut
 
