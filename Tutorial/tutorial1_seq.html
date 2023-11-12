@@ -54,6 +54,7 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to spann's documentation!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../tut.html">Tutorial</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Tutorial 1</a></li>
@@ -113,7 +114,7 @@ adata_seqfish.obs = adata_seqfish.obs.drop(&#39;cell_type&#39;, axis=1)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># preprocess to get torch datasets and dataloaders
-from preprocess import *
+from spann.preprocess import *
 
 adata_cm, adata_spa, adata_rna = anndata_preprocess(adata_seqfish, adata_rna, spatial_labels=False)
 source_sp_ds,target_sp_ds,source_cm_dl,target_cm_dl,test_source_cm_dl,test_target_cm_dl = generate_dataloaders(adata_cm,adata_spa,adata_rna)
@@ -147,7 +148,7 @@ rna_labels: [ 0  1  2  3  4  5  6  7  8  9 10]
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># contruct SPANN model
-from model import *
+from spann.model import *
 
 enc,dec,x_dim,z_dim = generate_ae_params(adata_cm, adata_spa, adata_rna)
 spann = SPANN_model(x_dim, z_dim, enc, dec, class_num=len(adata_rna.obs[&#39;cell_type&#39;].unique()), device=device)
@@ -243,7 +244,7 @@ ood sample exists: True
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># distribution plot
-from functions import *
+from spann.functions import *
 
 dist_fig = distribution_plot(adata_target.obs[&#39;Escore&#39;], threshold_test, bins=25, ylim=4000)
 </pre></div>
