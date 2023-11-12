@@ -3,9 +3,9 @@ jupyter notebooks for bioinformatics paper "SPANN: Annotating single-cell resolu
 ![image](https://github.com/ddb-qiwang/SPANN/assets/52522175/2d355850-12b9-4fe1-9bff-6a75d24b4ec8)
 
 # Install
-'''
-pip install spann
-'''
+
+ pip install spann
+
 
 readthedocs page at https://ddb-qiwang.github.io/SPANN-torch/
 
