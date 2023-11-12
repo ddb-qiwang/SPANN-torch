@@ -9,14 +9,6 @@ Welcome to spann's documentation!
    :caption: Contents:
 
    self
-   Installation
-   Overview
-   MDTest
+   api 
+   tut
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

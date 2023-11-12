@@ -40,8 +40,8 @@ release = __version__
 # ones.
 extensions = [
     "sphinx_rtd_theme",
+    "nbsphinx",
     "sphinx.ext.autodoc",
-    "autoapi.extension",
     "sphinx.ext.napoleon",
     "sphinx.ext.linkcode",
     "sphinx_copybutton",
@@ -145,9 +145,8 @@ html_theme = "sphinx_rtd_theme"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
-
 html_title = project
-html_logo = "../../assets/logo_200w.png"
+html_logo = '../../assets/logo.png'
 html_favicon = None
 
 html_theme_options = {

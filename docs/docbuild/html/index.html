@@ -7,7 +7,6 @@
   <title>Welcome to spann&#39;s documentation! &mdash; spann</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
       <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -21,10 +20,11 @@
         <script src="_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="_static/clipboard.min.js?v=a7894cd8"></script>
         <script src="_static/copybutton.js?v=f281be69"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Installation" href="Installation.html" /> 
+    <link rel="next" title="API" href="api.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -37,7 +37,7 @@
           
           <a href="#" class="icon icon-home">
             spann
-              <img src="_static/logo_200w.png" class="logo" alt="Logo"/>
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -50,10 +50,8 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Welcome to spann's documentation!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MDTest.html">Test</a></li>
-<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tut.html">Tutorial</a></li>
 </ul>
 
         </div>
@@ -84,52 +82,79 @@
 <h1>Welcome to spann's documentation!<a class="headerlink" href="#welcome-to-spann-s-documentation" title="Permalink to this heading"></a></h1>
 </section>
 <section id="spann">
-<h1>spann<a class="headerlink" href="#spann" title="Permalink to this heading"></a></h1>
-<p>spann is a</p>
+<h1>SPANN<a class="headerlink" href="#spann" title="Permalink to this heading"></a></h1>
+<p>paper “SPANN: Annotating
+single-cell resolution spatial transcriptome data with scRNA-seq data”
+(under peer-review at bib) <img alt="image" src="https://github.com/ddb-qiwang/SPANN/assets/52522175/2d355850-12b9-4fe1-9bff-6a75d24b4ec8" /></p>
 </section>
-<section id="features">
-<h1>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h1>
+<section id="file-descriptions-and-data-requirement">
+<h1>File Descriptions and data requirement<a class="headerlink" href="#file-descriptions-and-data-requirement" title="Permalink to this heading"></a></h1>
+<p>SPANN is a single-cell resolution spatial transcriptome data annotator.
+With a well-annotated reference scRNA-seq data, one can accurately
+identify cell identifications as well as discover novel cells.</p>
+<p>There are 2 tutorials in the repository. Tutorial 1 annotates spatial
+transcriptome data without validation. If you do not have cell type
+labels for spatial data, you can follow tutorial 1 to annotate the
+spatial data with scRNA-seq reference. Tutorial 2 annotates spatial
+transcriptome data and evaluate the annotation performance with ground
+truth cell type labels. If you want to validate the annotation
+performance of SPANN or compare SPANN to other methods on benchmark
+datasets, you can follow tutorial 2.</p>
+<p>The Mouse Embryo seqFISH-scRNA datasets used in the tutorials can be
+downloaded from
+<a class="reference external" href="https://drive.google.com/drive/folders/1kEHvid7F43sZAWh4xB-P0gLgYEnXVnNS?usp=sharing">https://drive.google.com/drive/folders/1kEHvid7F43sZAWh4xB-P0gLgYEnXVnNS?usp=sharing</a></p>
+<p>We also uploaded the notebooks applying SPANN on all datasets mentioned
+in our paper.</p>
 </section>
-<section id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
-<p>spann requires Python <code class="docutils literal notranslate"><span class="pre">&gt;=3.8</span></code> and can be installed via:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/michaelGuo1204/SPANN-torch.git
-</pre></div>
-</div>
-</section>
-<section id="usage">
-<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h1>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">spann</span>
-</pre></div>
-</div>
+<section id="hyper-parameters-and-recommended-settings">
+<h1>Hyper-parameters and recommended settings<a class="headerlink" href="#hyper-parameters-and-recommended-settings" title="Permalink to this heading"></a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><p>lambda_recon: default 2000, the strength of reconstruction loss</p></li>
+<li><p>lambda_kl: default 0.5, the strength of KL-divergence loss</p></li>
+<li><p>lambda_cd: default 0.001, the strength of cell-type-level domain
+alignment loss, we recommend to set it higher(=0.1) when the gap
+between scRNA-seq data and spatial data is big, and to set it
+lower(=0.0001) when the gap between datasets is small.</p></li>
+<li><p>lambda_spa: default 0.1, the strength of spatial-representation
+adjacency loss, we recommend to set it lower(=0.01) when the
+spatial pattern is not clear(when the spatial distribution is
+chaotic), and recommend to set it higher(=0.5) when the spatial
+pattern is clear.</p></li>
+<li><p>lambda_nb: default 0.1, the strength of neighbor loss, we recommend
+to set it lower(=0.01) when the spatial pattern is not clear(when the
+spatial distribution is chaotic), and recommend to set it
+higher(=10) when the spatial pattern is clear.</p></li>
+<li><p>mu: default 0.6, the update speeed of beta (from 0.0-1.0). beta is
+the estimate of target cell type distribution.</p></li>
+<li><p>temp: default 0.1, the temperature paremeter for
+spatial-representation adjacency loss</p></li>
+</ul>
+</div></blockquote>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Welcome to spann's documentation!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MDTest.html">Test</a></li>
-<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="autoapi/spann/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spann</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apis/preprocess.html">Preprocess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apis/spann.html">SPANN Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apis/functions.html">Function</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tut.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial/tutorial1_seq.html">Tutorial 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial/tutorial2_seq.html">Tutorial 2</a></li>
 </ul>
 </li>
 </ul>
 </div>
-</section>
-<section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>
-<ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
-</ul>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="api.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
