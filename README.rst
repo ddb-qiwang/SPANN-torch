@@ -60,4 +60,4 @@ Hyper-parameters and recommended settings
    -  temp: default 0.1, the temperature paremeter for
       spatial-representation adjacency loss
 
-.. |image| image:: https://github.com/ddb-qiwang/SPANN/assets/52522175/2d355850-12b9-4fe1-9bff-6a75d24b4ec8
+.. |image| image:: https://github.com/ddb-qiwang/SPANN-torch/blob/main/assets/framework.jpg
