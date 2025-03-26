@@ -15,7 +15,7 @@ SPANN is a single-cell resolution spatial transcriptome data annotator. With a w
 
 There are 2 tutorials in the repository. Tutorial 1 annotates spatial transcriptome data without validation. If you do not have cell type labels for spatial data, you can follow tutorial 1 to annotate the spatial data with scRNA-seq reference. Tutorial 2 annotates spatial transcriptome data and evaluate the annotation performance with ground truth cell type labels. If you want to validate the annotation performance of SPANN or compare SPANN to other methods on benchmark datasets, you can follow tutorial 2. 
 
-The Mouse Embryo seqFISH-scRNA datasets used in the tutorials can be downloaded from https://drive.google.com/drive/folders/1kEHvid7F43sZAWh4xB-P0gLgYEnXVnNS?usp=sharing
+The Mouse Embryo seqFISH-scRNA datasets used in the tutorials and the mouse visual cortex STARmap data can be downloaded from https://drive.google.com/drive/folders/1kEHvid7F43sZAWh4xB-P0gLgYEnXVnNS?usp=sharing
 
 We also uploaded the notebooks applying SPANN on all datasets mentioned in our paper.
 
