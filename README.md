@@ -1,5 +1,5 @@
 # SPANN
-jupyter notebooks for bioinformatics paper "SPANN: Annotating single-cell resolution spatial transcriptome data with scRNA-seq data" (under peer-review)
+jupyter notebooks for bioinformatics paper "SPANN: Annotating single-cell resolution spatial transcriptome data with scRNA-seq data" (published at briefings in bioinformatics) https://academic.oup.com/bib/article/25/2/bbad533/7590316
 ![image](https://github.com/ddb-qiwang/SPANN-torch/blob/main/assets/framework.jpg)
 
 # Install
